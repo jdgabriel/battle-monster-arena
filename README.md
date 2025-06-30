@@ -75,6 +75,7 @@ src/
 - **Modo multiplayer:** Permitir batalhas entre usuários em tempo real.
 - **Testes automatizados:** Adicionar testes unitários e de integração para maior robustez.
 - **Acessibilidade:** Melhorar a experiência para usuários com necessidades especiais.
+- **Componetização dos sitema:** Melhorar e criar componentes reutilizáveis dentro de um style guide.
 - **Internacionalização:** Suporte a múltiplos idiomas.
 
 ## 📧 Contato
