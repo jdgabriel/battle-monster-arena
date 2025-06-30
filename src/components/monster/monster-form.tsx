@@ -8,12 +8,12 @@ import { SubmitButton } from '../ui/submit-button';
 import { TextInput } from '../ui/text-input';
 
 const monsterSchema = z.object({
-  name: z.string().min(3, 'Name must be at least 3 characters long'),
-  attack: z.coerce.number().min(10, 'Attack must be at least 1'),
-  defense: z.coerce.number().min(10, 'Defense must be at least 1'),
-  hp: z.coerce.number().min(1, 'HP must be at least 1'),
-  speed: z.coerce.number().min(1, 'Speed must be at least 1'),
-  imageUrl: z.string().url('Image URL must be a valid URL'),
+  name: z.string().min(3, 'O nome deve ter pelo menos 3 caracteres'),
+  attack: z.coerce.number().min(11, 'O ataque deve ser maior que 10 pontos'),
+  defense: z.coerce.number().min(11, 'A defesa deve ser maior que 10 pontos'),
+  hp: z.coerce.number().min(11, 'O HP deve ser maior que 10 ponto'),
+  speed: z.coerce.number().min(2, 'A velocidade deve ser maior que 1 ponto'),
+  imageUrl: z.string().url('Não consigo ver seu monstro, o link está correto?'),
 });
 
 type MonsterFormValues = z.infer<typeof monsterSchema>;
@@ -39,9 +39,9 @@ export const MonsterForm = () => {
     <div className="bg-gray-900 p-4 shadow-lg w-full">
       <h2 className="text-yellow-300 font-extrabold tracking-widest text-lg uppercase drop-shadow-lg mb-4">Criar monstro</h2>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-2 w-full">
+        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-3 w-full">
           <TextInput name="name" label="Nome" placeholder="Nome do monstro" />
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 mt-3">
             <Sword className="size-8 text-red-400" />
             <SliderInput name="attack" label="Ataque básico" min={10} max={30} />
           </div>
@@ -53,7 +53,7 @@ export const MonsterForm = () => {
             <Heart className="size-8 text-green-400" />
             <SliderInput name="hp" label="HP (Vida Máxima)" min={10} max={50} />
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 mb-3">
             <Zap className="size-8 text-yellow-300" />
             <SliderInput name="speed" label="Velocidade" min={1} max={30} />
           </div>
