@@ -36,7 +36,7 @@ src/
 ## ⚔️ Funcionalidades
 
 - **Criar Monstros:** Formulário para criar monstros com nome, ataque, defesa, HP, velocidade e imagem.
-- **Listar Monstros:** Visualize todos os monstros criados.
+- **Lista de Monstros:** Visualize todos os monstros criados.
 - **Batalha:** Selecione dois monstros para batalhar, acompanhe os logs e veja o vencedor.
 - **Regras:** Visualize as regras da batalha.
 
