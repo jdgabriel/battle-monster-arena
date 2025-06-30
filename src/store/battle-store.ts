@@ -55,14 +55,14 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
     if (!right.monster || !left.monster) return;
 
     set({ hasBattle: true, winner: null });
-    const simRight = { ...right.monster, currentHp: right.hp!, items: { ...right.items } };
-    const simLeft = { ...left.monster, currentHp: left.hp!, items: { ...left.items } };
+    const monsterRight = { ...right.monster, currentHp: right.hp!, items: { ...right.items } };
+    const monsterLeft = { ...left.monster, currentHp: left.hp!, items: { ...left.items } };
 
     let attacker =
-      simRight.speed > simLeft.speed || (simRight.speed === simLeft.speed && simRight.attack > simLeft.attack)
-        ? simRight
-        : simLeft;
-    let defender = attacker.id === simRight.id ? simLeft : simRight;
+      monsterRight.speed > monsterLeft.speed || (monsterRight.speed === monsterLeft.speed && monsterRight.attack > monsterLeft.attack)
+        ? monsterRight
+        : monsterLeft;
+    let defender = attacker.id === monsterRight.id ? monsterLeft : monsterRight;
 
     let round = 1;
     let done = false;
@@ -80,8 +80,8 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
         attacker.items.strongAttack = false;
         logger.strongAttack(attacker.name);
         set((state) => ({
-          right: attacker.id === simRight.id ? { ...state.right, items: { ...attacker.items } } : state.right,
-          left: attacker.id === simLeft.id ? { ...state.left, items: { ...attacker.items } } : state.left,
+          right: attacker.id === monsterRight.id ? { ...state.right, items: { ...attacker.items } } : state.right,
+          left: attacker.id === monsterLeft.id ? { ...state.left, items: { ...attacker.items } } : state.left,
         }));
         await new Promise((res) => setTimeout(res, stepDelay));
       }
@@ -98,8 +98,8 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
         defender.items.defense -= 1;
         logger.defense(defender.name);
         set((state) => ({
-          right: defender.id === simRight.id ? { ...state.right, items: { ...defender.items } } : state.right,
-          left: defender.id === simLeft.id ? { ...state.left, items: { ...defender.items } } : state.left,
+          right: defender.id === monsterRight.id ? { ...state.right, items: { ...defender.items } } : state.right,
+          left: defender.id === monsterLeft.id ? { ...state.left, items: { ...defender.items } } : state.left,
         }));
         await new Promise((res) => setTimeout(res, stepDelay));
       }
@@ -109,8 +109,8 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
 
       for (let h = hpBeforeAttack; h >= defender.currentHp; h--) {
         set((prev) => ({
-          right: defender.id === simRight.id ? { ...prev.right, hp: h } : prev.right,
-          left: defender.id === simLeft.id ? { ...prev.left, hp: h } : prev.left,
+          right: defender.id === monsterRight.id ? { ...prev.right, hp: h } : prev.right,
+          left: defender.id === monsterLeft.id ? { ...prev.left, hp: h } : prev.left,
         }));
         await new Promise((res) => setTimeout(res, 60));
       }
@@ -133,8 +133,8 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
     set({
       winner: [right.monster, left.monster].find((m) => m?.id === attacker.id) || null,
       hasBattle: false,
-      right: { ...get().right, items: simRight.items },
-      left: { ...get().left, items: simLeft.items },
+      right: { ...get().right, items: monsterRight.items },
+      left: { ...get().left, items: monsterLeft.items },
     });
   },
 })); 
