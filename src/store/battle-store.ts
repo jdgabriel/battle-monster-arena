@@ -89,7 +89,11 @@ export const useBattleStore = create<BattleStore>((set, get) => ({
       logger.attack(attacker.name, defender.name);
       await new Promise((res) => setTimeout(res, stepDelay));
 
-      if (defender.items.defense > 0 && Math.random() < 0.5) {
+      const defenderMaxHp = defender.hp ?? defender.currentHp;
+      // Com 30% ou menos de vida, o item de Defesa é usado. Caso ainda tenha.
+      const defenderLowHp = defender.currentHp <= 0.3 * defenderMaxHp;
+
+      if (defender.items.defense > 0 && defenderLowHp) {
         damage = 0;
         defender.items.defense -= 1;
         logger.defense(defender.name);
