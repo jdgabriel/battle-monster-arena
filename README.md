@@ -7,7 +7,7 @@ Um projeto de batalha de monstros feito com **React**, **TypeScript** e **Vite**
 
 O Battle Monster é um app onde você pode criar monstros personalizados, visualizar seus atrubutos e colocá-los para batalhar em uma arena. O projeto utiliza componentes organizados por contexto (monstros, batalha, formulários) e estilização com TailwindCSS.
 
-![image](./.github/images/system_placeholder.png)
+![image](./.github/images/system_screen.png)
 
 ## 🚀 Tecnologias Utilizadas
 
