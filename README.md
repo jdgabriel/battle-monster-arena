@@ -1,6 +1,7 @@
-# 🐲 Battle Monster
+# 🐲 Battle Monster Arena
 
-Um projeto de batalha de monstros feito com **React**, **TypeScript** e **Vite**.
+Um projeto de batalha de monstros feito com **React**, **TypeScript** e **Vite**.<br/>
+### Acesse a demo do projeto: [Battle Monster Arena](https://battle-monster-arena.vercel.app/)
 
 ## ✨ Visão Geral
 
