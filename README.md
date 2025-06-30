@@ -42,19 +42,11 @@ src/
 1. Instale as dependências:
    ```bash
    pnpm install
-   # ou
-   npm install
-   # ou
-   yarn
    ```
 
 2. Rode o projeto em modo desenvolvimento:
    ```bash
    pnpm dev
-   # ou
-   npm run dev
-   # ou
-   yarn dev
    ```
 
 3. Acesse em [http://localhost:5173](http://localhost:5173)
